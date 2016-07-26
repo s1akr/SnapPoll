@@ -4,7 +4,7 @@ import {  } from 'react-bootstrap';
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 
-export default class DataDisplay extends Component {
+export default class Data extends Component {
 render() {
   return (
     <div id='Data'>

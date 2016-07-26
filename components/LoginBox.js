@@ -1,57 +1,55 @@
 import { ButtonInput, FormGroup, FormControl, Radio, Button, Well } from 'react-bootstrap';
 import React, {Component} from 'react';
-import Radiobutton from './Radio_1';
-import SubmitBtn from './SubmitButton';
+// import Radiobutton from './Radio_1';
+// import SubmitBtn from './SubmitButton';
 
 
 export default class LoginBox extends Component {
-render() {
-  const questions = this.createQuestions();
-  return (
-    <div id='LoginBox'>
-    <form onSubmit={this.login.bind(this)}>
-    <input id="userName" />
-    <input id="pw" />
-    <button id="submit" />
-    </form>
-    </div>
-  )
-}
-
-login() {
-  var obj = {};
-  obj.name = $('#userName');
-  obj.pw = $('#pw');
-  obj = JSON.stringify(obj);
-  $.post('/login',obj);
-}
-
-  createQuestions(){
-    class Question {
-      constructor (answer, checked, enabled) {
-        this.answer = answer,
-        this.checked = checked,
-        this.enabled = enabled
-    }
-  };
-  const answer1 = new Question ('Okay', 'checked', 'enabled');
-  const answer2 = new Question ('Good', 'checked', 'enabled');
-  const answer3 = new Question ('Very Good', 'checked', 'enabled');
-  const answer4 = new Question ('Great', 'checked', 'enabled');
-  const answer5 = new Question ('Excellent', 'checked', 'enabled');
-
-  const questions = [answer1, answer2, answer3, answer4, answer5];
-  return questions.map((item) => {
+  render() {
+    // const questions = this.createQuestions();
     return (
-      <Radiobutton answer={item.answer} checked={item.checked} enabled={item.enabled} key={item.answer}/>
+      <div id='LoginBox'>
+      <form onSubmit={this.login.bind(this)}>
+      <input id="userName" />
+      <input id="pw" />
+      <button id="submit" />
+      </form>
+      </div>
     )
-  })
+  }
+
+  login() {
+    var obj = {};
+    obj.name = $('#userName');
+    obj.pw = $('#pw');
+    obj = JSON.stringify(obj);
+    $.post('/login',obj);
+  }
+
+    createQuestions(){
+      class Question {
+        constructor (answer, checked, enabled) {
+          this.answer = answer,
+          this.checked = checked,
+          this.enabled = enabled
+      }
+    };
+    const answer1 = new Question ('Okay', 'checked', 'enabled');
+    const answer2 = new Question ('Good', 'checked', 'enabled');
+    const answer3 = new Question ('Very Good', 'checked', 'enabled');
+    const answer4 = new Question ('Great', 'checked', 'enabled');
+    const answer5 = new Question ('Excellent', 'checked', 'enabled');
+
+    const questions = [answer1, answer2, answer3, answer4, answer5];
+    return questions.map((item) => {
+        <Radiobutton answer={item.answer} checked={item.checked} enabled={item.enabled} key={item.answer}/>
+    })
+
+  }
 
 }
 
-}
 
-//
 // import { ButtonInput, FormGroup, FormControl, Radio, Button, Well } from 'react-bootstrap';
 // import React, {Component} from 'react';
 //
