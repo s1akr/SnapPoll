@@ -6,7 +6,7 @@ var dbMethods = require('../Database/databaseMethods');
 //MP - original code.
 // app.use(express.static(path.join(__dirname, './../')));
 
-app.use(express.static(path.join(__dirname, '../')));
+app.use(express.static(path.join(__dirname,'../')));
 
 // MP - commented out
 // app.get('/', function(req,res) {
@@ -24,11 +24,11 @@ app.listen(8080, function() {
 // Confirm file structure and file path with team. Currently commented out.
 
 app.get('/', function(req,res) {
-  res.sendFile('/vote.html');
+  res.sendFile(path.join(__dirname,'../','vote.html'));
 });
 
 app.get('/results', function(req,res) {
-  res.sendFile('/results.html');
+  res.sendFile(path.join(__dirname,'../','results.html'));
 });
 
 app.get('/data', dbMethods.getPoll);
