@@ -36,3 +36,5 @@ app.get('/data', dbMethods.getPoll);
 app.post('/data', dbMethods.countAnswer, function(req,res) {
   res.redirect('/results.html');
 });
+
+module.exports = app;
