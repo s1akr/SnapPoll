@@ -1,4 +1,4 @@
-const app = require('../server/server.js');
+const app = require('../../server/server.js');
 const request = require('supertest')(app);
 const expect = require('chai').expect;
 const MongoClient = require('mongodb').MongoClient;
