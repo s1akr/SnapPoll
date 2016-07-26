@@ -69,4 +69,7 @@ dbMethods.deletePollInstance = function(pollToDelete_id){
 
 mongoose.connect('mongodb://localhost/tadpoll');
 
+//MP - DB code for iteration project
+
+
 module.exports = dbMethods;
