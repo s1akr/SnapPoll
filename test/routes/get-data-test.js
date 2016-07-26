@@ -7,11 +7,12 @@ describe('GET "/data"', () => {
       .get('/data')
       .expect(200)
       .expect('Content-Type', /json/)
-      .end(res => {
+      .end((err, res) => {
         if (!('question' in res.body)) throw new Error('incorrect structure');
         if (!('answers' in res.body)) throw new Error('incorrect structure');
         if (!('choices' in res.body)) throw new Error('incorrect structure');
         if (!('counter' in res.body)) throw new Error('incorrect structure');
+        done();
       });
   });
 });

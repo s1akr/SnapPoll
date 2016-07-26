@@ -4,7 +4,7 @@
   "description": "Your awesome project!",
   "main": "bundle.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "nodemon server/server.js",
     "test": "mocha test/.setup.js test/reactTests.js"
   },
   "author": "",
@@ -18,8 +18,10 @@
     "gulp-nodemon": "^2.0.6",
     "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
+    "nodemon": "^1.10.0",
     "react-addons-test-utils": "^15.2.1",
     "sinon": "^1.17.4",
+    "supertest": "^1.2.0",
     "watchify": "^3.2.2"
   },
   "dependencies": {

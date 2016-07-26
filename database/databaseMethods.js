@@ -78,58 +78,64 @@ mongoose.connect('mongodb://localhost/tadpolliteration');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('We are connected!')
+  console.log('We are connected!');
 });
 
-//Add MVP poll question to tadpolliteration database.
-var newPoll = Poll({
-  question: 'What topic would you like to review?',
-  choices: ['A','B','C','D','E'],
-  answers: ['Asynchronous/Promises Fundamentals','Angular','React','React','Node/Express/Database Backend', 'Obect Orientated Programming'],
-  counter: [0,0,0,0,0]
-});
+// Add MVP poll question to tadpolliteration database.
+// var newPoll = Poll({
+//   question: 'What topic would you like to review?',
+//   choices: ['A','B','C','D','E'],
+//   answers: ['Asynchronous/Promises Fundamentals','Angular','React','Node/Express/Database Backend', 'Obect Orientated Programming'],
+//   counter: [0,0,0,0,0]
+// });
+//
+// newPoll.save(err => {
+//   if (err) console.log(err);
+//   else console.log('saved');
+// });
 
-function saveMvpPoll() {
-  Poll.find({ }, (err, polls) => {
-  if (!polls) {
-    newPoll.save(function(err) {
-      if (err) {
-        console.log('New Poll save error!')
-      } else {
-        console.log('New Poll saved!')
-      }
-    });
-  } else {
-    console.log('You have poll data', polls);
-  }
-  });
-}
+// function saveMvpPoll() {
+//   Poll.findOne({question:'What topic would you like to review?'}, (err, polls) => {
+//   if (!polls) {
+//     newPoll.save(function(err) {
+//       if (err) {
+//         console.log('New Poll save error!')
+//       } else {
+//         console.log('New Poll saved!')
+//       }
+//     });
+//   } else {
+//     console.log('You have poll data', polls);
+//   }
+//   });
+// }
 
 function getPoll(req, res, next){
-  saveMvpPoll();
-  Poll.find({ }, (err, polls) => {
+  // saveMvpPoll();
+  Poll.find({}, (err, polls) => {
     if (err) throw err;
     res.json(polls);
   });
 }
 
 function countAnswer(req, res, next) {
-  Poll.find({ }, (err, poll) => {
+  Poll.findOne({ }, (err, poll) => {
     if(err) throw err;
     let index = poll[0].choices.indexOf(req.body.answer)
-    let counterArray = poll[0].counter
-    let count = poll[0].counter[index]+1;
-    counterArray.splice(index,1,count);
-    Poll.update({ }, { $set: { counter: counterArray } }, (err, result) => 
-      console.log('Vote counted!'));
+    let counterArray = poll[0].counter;
+    let count = poll[0].counter[index] + 1;
+    counterArray.splice(index, 1, count);
+    Poll.update({ }, { $set: { counter: counterArray } }, (err, result) => {
+      console.log('Vote counted!');
       next();
+    });
   });
 }
 
 function resetCounter() {
   Poll.find({ }, (err, poll) => {
     if(err) console.log('Reset Error!')
-    Poll.update({ }, { $set: { counter: [0,0,0,0,0] } }, (err, result) => 
+    Poll.update({ }, { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
       console.log('Counter reset!'));
   });
 }
