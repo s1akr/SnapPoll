@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 describe('POST "/data"', function() {
   var poll, db;
   before(done => {
-    MongoClient.connect('mongodb://localhost/tadpolliterration', function(err, db_) {
+    MongoClient.connect('mongodb://localhost/tadpolliterration', (err, db_) => {
       if (err) throw new Error(err);
       db = db_;
       poll = db_.collection('Poll');
@@ -20,5 +20,16 @@ describe('POST "/data"', function() {
       .expect(200)
       .expect('Content-Type', /html/)
       .end(done);
+  });
+
+  it('should update the corresponding answer in the database', (done) => {
+    request
+      .post('/data')
+      .send({answer: 'A'})
+      .end(res => {
+        poll.findOne({}, (err, poll) => {
+
+        })
+      });
   });
 });
