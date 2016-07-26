@@ -134,4 +134,7 @@ function resetCounter() {
   });
 }
 
-module.exports = dbMethods;
+module.exports = {
+  getPoll,
+  countAnswer
+};
