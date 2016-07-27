@@ -8,12 +8,12 @@ export default class LoginBox extends Component {
   render() {
     // const questions = this.createQuestions();
     return (
-      <div id='LoginBox'>
-      <form onSubmit={this.login.bind(this)}>
-      <input id="userName" />
-      <input id="pw" />
-      <button id="submit" />
-      </form>
+      <div className='LoginBox'>
+        <form onSubmit={this.login.bind(this)}>
+          <input className="userName" />
+          <input className="pw" />
+          <button className="submit" />
+        </form>
       </div>
     )
   }

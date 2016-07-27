@@ -7,7 +7,7 @@ import {render} from 'react-dom';
 export default class Data extends Component {
 render() {
   return (
-    <div id='Data'>
+    <div className='Data'>
 
        <BarChart
          axes

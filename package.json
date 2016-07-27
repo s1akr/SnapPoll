@@ -4,8 +4,8 @@
   "description": "Your awesome project!",
   "main": "bundle.js",
   "scripts": {
-    "start": "node server/server.js",
-    "test": "mocha test/.setup.js test/reactTests.js"
+    "start": "nodemon server/server.js",
+    "test": "mocha test/.setup.js test/newReactTests.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +18,15 @@
     "gulp-nodemon": "^2.0.6",
     "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
+    "nodemon": "^1.10.0",
     "react-addons-test-utils": "^15.2.1",
     "sinon": "^1.17.4",
+    "supertest": "^1.2.0",
     "watchify": "^3.2.2"
   },
   "dependencies": {
     "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
@@ -31,6 +34,7 @@
     "babel-runtime": "^6.9.2",
     "babelify": "^7.2.0",
     "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
     "browserify": "^10.2.4",
     "chai": "^3.4.1",
     "express": "^4.13.3",
@@ -38,9 +42,11 @@
     "gulp-notify": "^2.2.0",
     "mocha": "^2.4.5",
     "mongoose": "^4.5.5",
+    "nodemon": "^1.10.0",
     "path": "^0.12.7",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
+    "radium": "^0.18.1",
     "react": "^0.14.8",
     "react-bootstrap": "^0.30.0-rc.2",
     "react-bootstrap-validation": "^0.1.11",
