@@ -81,7 +81,7 @@ db.once('open', function() {
   console.log('We are connected!');
 });
 
-//Add MVP poll question to tadpolliteration database.
+///*Add MVP poll question to tadpolliteration database.
 // var newPoll = Poll({
 //   question: 'What topic would you like to review?',
 //   choices: ['A','B','C','D','E'],
@@ -110,38 +110,96 @@ db.once('open', function() {
 //   });
 // }
 
+//Added pollArray to handle 'add question' functionality to grab the most recent poll (array lenght - 1).
 function getPoll(req, res, next){
   // saveMvpPoll();
   Poll.find({}, (err, polls) => {
     if (err) throw err;
-    res.json(polls);
+    let pollArray = [];
+    pollArray.push(polls[polls.length-1]);
+    res.json(pollArray);
   });
 }
 
+//Made changes to handle 'add question' functionality to grab the most recent poll (array lenght - 1).
 function countAnswer(req, res, next) {
   console.log('req.body',req.body);
   Poll.find({ }, (err, poll) => {
     if(err) throw err;
-    let index = poll[0].choices.indexOf(req.body.answer)
-    let counterArray = poll[0].counter;
-    let count = poll[0].counter[index] + 1;
+    let index = poll[poll.length-1].choices.indexOf(req.body.answer)
+    let counterArray = poll[poll.length-1].counter;
+    let count = poll[poll.length-1].counter[index] + 1;
+    let pollID = poll[poll.length-1]._id
     counterArray.splice(index, 1, count);
-    Poll.update({ }, { $set: { counter: counterArray } }, (err, result) => {
+    //udated Poll.update from { } to find the poll being updated based on object id.
+    Poll.update({ _id: pollID }, { $set: { counter: counterArray } }, (err, result) => {
       console.log('Vote counted!');
       next();
     });
   });
 }
 
-function resetCounter() {
+//Made changes to reset counter based on index position of poll.
+function resetCounter(index) {
   Poll.find({ }, (err, poll) => {
     if(err) console.log('Reset Error!')
-    Poll.update({ }, { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
+    Poll.update(poll[index], { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
       console.log('Counter reset!'));
   });
 }
 
+//Make sure there aren't issues calling Poll variable. May need to require PollModel on server.js file
+function addPoll(req, res, next) {
+  console.log('req.body add Poll',req.body);
+  
+  var newPoll = Poll({
+    question: req.body.question,
+    choices: ['A','B','C','D','E'],
+    answers: req.body.answers,
+    counter: [0,0,0,0,0]
+  });
+
+  newPoll.save(err => {
+    if (err) console.log(err);
+    else {
+      console.log('new poll saved');
+      next();
+    }
+  });
+
+}
+
+//test addPoll to ensure functionality and make sure poll is being added.
+//It works.
+  // function addPollTest(obj) {
+  //   console.log('req.body add Poll',obj.body);
+    
+  //   var newPoll = Poll({
+  //     question: obj.body.question,
+  //     choices: ['A','B','C','D','E'],
+  //     answers: obj.body.answers,
+  //     counter: [1,1,1,1,1]
+  //   });
+
+  //   newPoll.save(err => {
+  //     if (err) console.log(err);
+  //     else console.log('new poll saved');
+  //   });
+
+  // }
+
+  // var testAddPoll = {
+  //   body: {
+  //     'question':'What do you think of the add question feature?',
+  //     'answer': ['I like A','I like B','I like C','I like D','I like E']
+  //   }
+  // }
+
+  // addPollTest(testAddPoll);
+
+
 module.exports = {
   getPoll,
-  countAnswer
+  countAnswer,
+  addPoll
 };
