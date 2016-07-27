@@ -41,11 +41,6 @@ app.post('/data', dbMethods.countAnswer, function(req, res) {
   res.send({redirect: '/results'});
 });
 
-<<<<<<< HEAD
-app.get('/question', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'question.html'))
-})
-=======
 //Routes for adding a question to the database
 //MP - question.html current does not exis in my folder.
 //No test written for '/question' get request.
@@ -60,6 +55,5 @@ app.post('/question', dbMethods.addPoll, function(req, res) {
   //res.redirect('/vote');
   res.send({redirect: '/'});
 });
->>>>>>> d202660bb79b634fefbbbde57f659d5e0ff57e54
 
 module.exports = app;
