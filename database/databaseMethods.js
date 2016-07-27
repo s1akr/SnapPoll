@@ -155,7 +155,7 @@ function addPoll(req, res, next) {
   var newPoll = Poll({
     question: req.body.question,
     choices: ['A','B','C','D','E'],
-    answers: req.body.answers,
+    answers: req.body.answer,
     counter: [0,0,0,0,0]
   });
 
