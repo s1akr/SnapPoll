@@ -2,11 +2,15 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: ["babel-polyfill", "./Client/Result/app.js"],
+
+  entry: {
+    Result: "./Client/Result/app.js",
+    Vote: "./Client/Vote/app.js"
+  },
   output: {
       path: __dirname + '/Build',
       // publicPath: '/assets/',
-      filename: "bundle.js"
+      filename: "[name].bundle.js"
   },
   devtool: 'source-map',
   resolve: {
