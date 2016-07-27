@@ -10,6 +10,7 @@ var SurveyTable = React.createClass({
       cache: false,
       success: function(data) {
         this.setState({data: data});
+        console.log('componentdidmount',this.state.data)
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -24,6 +25,8 @@ var SurveyTable = React.createClass({
 
   componentDidMount: function() {
     this.loadSurveyFromServer();
+    console.log('componentdidmount',this.state.data)
+    setInterval(this.loadSurveyFromServer, this.props.pollInterval);
   },
 
   render: function() {
@@ -90,6 +93,6 @@ var ChoiceContainer = React.createClass({
 
 
 ReactDOM.render(
-  <SurveyTable url='/data' />,
+  <SurveyTable url='/data' pollInterval={2000} />,
   document.getElementById('main-container')
 );
