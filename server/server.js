@@ -35,7 +35,10 @@ app.get('/results', function(req, res) {
 app.get('/data', dbMethods.getPoll);
 
 app.post('/data', dbMethods.countAnswer, function(req, res) {
-  res.redirect('/results');
+  console.log('You made it to post callback!')
+  //res.sendFile(path.join(__dirname,'../','results.html'));
+  //res.redirect('/results');
+  res.send({redirect: '/results'});
 });
 
 module.exports = app;
