@@ -41,8 +41,8 @@ app.post('/data', dbMethods.countAnswer, function(req, res) {
   res.send({redirect: '/results'});
 });
 
-app.post('/question', dbMethods.addQuestion, function(req, res) {
-    res.send({redirect: '/results'});
-});
+app.get('/question', (req, res) => {
+  res.sendFile(path.join(__dirname, '../', 'question.html'))
+})
 
 module.exports = app;

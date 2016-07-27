@@ -5,7 +5,8 @@ module.exports = {
 
   entry: {
     Result: "./Client/Result/app.js",
-    Vote: "./Client/Vote/app.js"
+    Vote: "./Client/Vote/app.js",
+    Question: "./Client/Question/app.jsx"
   },
   output: {
       path: __dirname + '/Build',
