@@ -114,14 +114,16 @@ function getPoll(req, res, next){
   // saveMvpPoll();
   Poll.find({}, (err, polls) => {
     if (err) throw err;
-    res.json(polls);
+    const result = [];
+    result.push(polls[0]);
+    res.json(result);
   });
 }
 
 function countAnswer(req, res, next) {
   Poll.find({ }, (err, poll) => {
     if(err) throw err;
-    let index = poll[0].choices.indexOf(req.body.answer)
+    let index = poll[0].choices.indexOf(req.body.answer);
     let counterArray = poll[0].counter;
     let count = poll[0].counter[index] + 1;
     counterArray.splice(index, 1, count);
@@ -134,7 +136,7 @@ function countAnswer(req, res, next) {
 
 function resetCounter() {
   Poll.find({ }, (err, poll) => {
-    if(err) console.log('Reset Error!')
+    if(err) console.log('Reset Error!');
     Poll.update({ }, { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
       console.log('Counter reset!'));
   });

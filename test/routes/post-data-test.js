@@ -6,7 +6,7 @@ describe('POST "/data"', function() {
   it('should redirect to /results E', (done) => {
     request
       .post('/data')
-      .send({answer: 'E'})
+      .send({ answer: 'E' })
       .type('form')
       .set('Accept', /application\/json/)
       .expect('Location', /\/results/, done);

@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname,'../')));
 // app.get('/', function(req,res) {
 //   res.sendFile('/index.html');
 // });
-
+//
 // MP - commented out
 // app.post('/login', dbMethods.createNewHost);
 
@@ -36,6 +36,10 @@ app.get('/data', dbMethods.getPoll);
 
 app.post('/data', dbMethods.countAnswer, function(req, res) {
   res.redirect('/results');
+});
+
+app.post('/question', dbMethods.addQuestion, function(req, res) {
+    res.send({redirect: '/results'});
 });
 
 module.exports = app;
