@@ -3,17 +3,23 @@ import {render} from 'react-dom';
 import Data from './Data2';
 import ChoicesRow from './ChoicesRow';
 import { BarChart } from 'react-easy-chart';
-
+import $ from 'jquery';
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
+		this.colors = [];
+		for(var i = 0; i < 5; i++){
+			let color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+			this.colors.push(color);
+		}
 		this.update = this.update.bind(this);
 		this.state = {
 			question: '',
-			answers: [],
+			answers: ['','','','',''],
 			choices: [],
-			counter: [0,0,0,0,0]
+			counter: [0,0,0,0,0],
+			colors: this.colors
 		}
 	}
 
@@ -24,12 +30,29 @@ export default class App extends Component {
 			dataType: 'json',
 			cache: false,
 			success: (data) => {
-				let newQuestion = data[0].question;
-				let newCounter = data[0].counter;
-				let newAnswers = data[0].answers;
-				let newChoices = data[0].choices;
 				let newState = this.state;
-				newState.question = newQuestion;
+				// get question from DB
+				if(this.state.question !== data[0].question){
+					let newQuestion = data[0].question;
+					newState.question = newQuestion;
+				}
+				// if answers change, update them
+				let newAnswers = this.state.answers.map(function(answer, index){
+					if(answer !== data[0].answers[index]){
+						return data[0].answers[index];
+					}
+					return answer;
+				});
+				let newChoices = data[0].choices;
+				// if counter updates for any choice, update that counter and according color
+				let newColors = this.state.colors;
+				let newCounter = this.state.counter.map(function(counter, index){
+					if(counter !== data[0].counter[index]){
+						newColors[index] = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+						return data[0].counter[index];
+					}
+					return counter;
+				});
 				newState.counter = newCounter;
 				newState.answers = newAnswers;
 				newState.choices = newChoices;
@@ -44,6 +67,7 @@ export default class App extends Component {
 	componentWillMount() {}
 
 	render() {
+		console.log(this.state);
 		return (		
 			<div className='App'>
 				<Data
@@ -53,6 +77,7 @@ export default class App extends Component {
 					answers={this.state.answers}
 					choices={this.state.choices}
 					counter={this.state.counter}
+					colors={this.state.colors}
 				/>
 			</div>
 		)
@@ -60,7 +85,7 @@ export default class App extends Component {
 
 	componentDidMount() {
   	this.update();
-  	setInterval(this.update, 10000);
+  	setInterval(this.update, 2000);
 	}
 }
 

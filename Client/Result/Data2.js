@@ -7,18 +7,18 @@ export default class Data extends Component {
 	componentDidMount() {}
 
 	render() {
-	const chartOptions = [];
-	const choices = [];
-	this.props.answers.forEach(function(answer, index) {
-		let color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-		chartOptions.push({x: this.props.choices[index], y: this.props.counter[index], color: color})
-		choices.push(<ChoicesRow
-			key={index}
-			choice={this.props.choices[index]}
-			counter={this.props.counter[index]}
-			answer={answer}
-			color={color}
-			/>);
+		const chartOptions = [];
+		const choices = [];
+		this.props.answers.forEach(function(answer, index) {
+			// let color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+			chartOptions.push({x: this.props.choices[index], y: this.props.counter[index], color: this.props.colors[index]})
+			choices.push(<ChoicesRow
+				key={index}
+				choice={this.props.choices[index]}
+				counter={this.props.counter[index]}
+				answer={answer}
+				color={this.props.colors[index]}
+				/>);
 		}.bind(this));
 		return (
 			<div className='data'>
@@ -38,6 +38,6 @@ export default class Data extends Component {
 					{choices}
 				</ul>
 			</div>
-			)
+		)
 	}
 }
