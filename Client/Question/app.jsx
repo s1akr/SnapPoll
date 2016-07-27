@@ -61,6 +61,7 @@ class App extends Component {
       question: this.state.question,
       answer: this.state.answer,
     };
+    console.log('obj', obj);
     $.ajax({
       method: 'POST',
       url: '/question',

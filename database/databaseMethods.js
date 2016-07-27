@@ -115,15 +115,9 @@ function getPoll(req, res, next){
   // saveMvpPoll();
   Poll.find({}, (err, polls) => {
     if (err) throw err;
-<<<<<<< HEAD
-    const result = [];
-    result.push(polls[0]);
-    res.json(result);
-=======
     let pollArray = [];
     pollArray.push(polls[polls.length-1]);
     res.json(pollArray);
->>>>>>> d202660bb79b634fefbbbde57f659d5e0ff57e54
   });
 }
 
@@ -132,16 +126,10 @@ function countAnswer(req, res, next) {
   console.log('req.body',req.body);
   Poll.find({ }, (err, poll) => {
     if(err) throw err;
-<<<<<<< HEAD
-    let index = poll[0].choices.indexOf(req.body.answer);
-    let counterArray = poll[0].counter;
-    let count = poll[0].counter[index] + 1;
-=======
     let index = poll[poll.length-1].choices.indexOf(req.body.answer)
     let counterArray = poll[poll.length-1].counter;
     let count = poll[poll.length-1].counter[index] + 1;
     let pollID = poll[poll.length-1]._id
->>>>>>> d202660bb79b634fefbbbde57f659d5e0ff57e54
     counterArray.splice(index, 1, count);
     //udated Poll.update from { } to find the poll being updated based on object id.
     Poll.update({ _id: pollID }, { $set: { counter: counterArray } }, (err, result) => {
@@ -154,13 +142,8 @@ function countAnswer(req, res, next) {
 //Made changes to reset counter based on index position of poll.
 function resetCounter(index) {
   Poll.find({ }, (err, poll) => {
-<<<<<<< HEAD
-    if(err) console.log('Reset Error!');
-    Poll.update({ }, { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
-=======
     if(err) console.log('Reset Error!')
     Poll.update(poll[index], { $set: { counter: [0,0,0,0,0] } }, (err, result) =>
->>>>>>> d202660bb79b634fefbbbde57f659d5e0ff57e54
       console.log('Counter reset!'));
   });
 }
@@ -168,11 +151,11 @@ function resetCounter(index) {
 //Make sure there aren't issues calling Poll variable. May need to require PollModel on server.js file
 function addPoll(req, res, next) {
   console.log('req.body add Poll',req.body);
-  
+
   var newPoll = Poll({
     question: req.body.question,
     choices: ['A','B','C','D','E'],
-    answers: req.body.answers,
+    answers: req.body.answer,
     counter: [0,0,0,0,0]
   });
 
@@ -190,7 +173,7 @@ function addPoll(req, res, next) {
 //It works.
   // function addPollTest(obj) {
   //   console.log('req.body add Poll',obj.body);
-    
+
   //   var newPoll = Poll({
   //     question: obj.body.question,
   //     choices: ['A','B','C','D','E'],

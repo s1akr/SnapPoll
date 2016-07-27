@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var SurveyTable = React.createClass({
-  
+
   loadSurveyFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -51,7 +51,7 @@ var Survey = React.createClass({
         <h3>Question:</h3>
         <h3>{this.props.survey.question}</h3>
         <ChoiceContainer choiceData={this.props.survey}  />
-      </div> 
+      </div>
     );
   }
 });
@@ -60,22 +60,16 @@ var ChoiceContainer = React.createClass({
   getInitialState: function() {
     return {answer: ''};
   },
-  
+
   handleClick: function(index) {
     console.log('choice',this.props.choiceData.choices[index]);
    $.ajax({
       url: '/data',
       dataType: 'json',
       type: 'POST',
-      data: {answer: this.props.choiceData.choices[index]},
-      success: function(data) {
-      console.log('data success', data)
-      window.location = data.redirect  
-      //   this.setState({data: data});
-       }.bind(this),
-      error: function(xhr, status, err) {
-        console.error('/data', status, err.toString());
-      }.bind(this)
+      data: {answer: this.props.choiceData.choices[index]}
+    }).then(() => {
+      window.location = '/results';
     });
   },
 
