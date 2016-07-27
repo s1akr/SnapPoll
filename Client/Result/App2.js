@@ -85,7 +85,7 @@ export default class App extends Component {
 
 	componentDidMount() {
   	this.update();
-  	setInterval(this.update, 2000);
+  	setInterval(this.update, 200000);
 	}
 }
 
