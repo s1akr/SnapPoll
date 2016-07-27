@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "mocha test/.setup.js test/routes/*.js"
+    "test": "mocha test/.setup.js && test/newReactTests.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "babel-register": "^6.11.5",
     "enzyme": "^2.4.1",
     "gulp-nodemon": "^2.0.6",
+    "jquery": "^3.1.0",
     "jsdom": "^9.4.1",
     "mocha": "^2.5.3",
     "nodemon": "^1.10.0",
