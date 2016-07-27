@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 import App from '../components/App1';
-import Data from '../components/Data';
+import Data1 from '../components/Data';
 import LoginBox from '../components/LoginBox';
 import Radiobutton from '../components/Radio_1.js';
 import SubmitButton from '../components/SubmitButton';

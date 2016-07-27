@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "mocha test/.setup.js test/reactTests.js"
+    "test": "mocha test/.setup.js test/newReactTests.js"
   },
   "author": "",
   "license": "ISC",
@@ -40,9 +40,11 @@
     "gulp-notify": "^2.2.0",
     "mocha": "^2.4.5",
     "mongoose": "^4.5.5",
+    "nodemon": "^1.10.0",
     "path": "^0.12.7",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
+    "radium": "^0.18.1",
     "react": "^0.14.8",
     "react-bootstrap": "^0.30.0-rc.2",
     "react-bootstrap-validation": "^0.1.11",
