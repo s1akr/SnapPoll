@@ -119,7 +119,7 @@ function getPoll(req, res, next){
 }
 
 function countAnswer(req, res, next) {
-  Poll.findOne({ }, (err, poll) => {
+  Poll.find({ }, (err, poll) => {
     if(err) throw err;
     let index = poll[0].choices.indexOf(req.body.answer)
     let counterArray = poll[0].counter;
