@@ -46,7 +46,6 @@ export default class App extends Component {
 	render() {
 		return (		
 			<div className='App'>
-				<button onClick={this.update}>Update</button>
 				<Data
 					key={'data'}
 					url={this.props.url}
@@ -61,7 +60,7 @@ export default class App extends Component {
 
 	componentDidMount() {
   	this.update();
-  	setInterval(this.update, 200000);
+  	setInterval(this.update, 10000);
 	}
 }
 

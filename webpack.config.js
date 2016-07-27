@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+
   entry: {
     Result: "./Client/Result/app.js",
     Vote: "./Client/Vote/app.js"

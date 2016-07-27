@@ -24,12 +24,14 @@ export default class Data extends Component {
 			<div className='data'>
 				<h3>Question: {this.props.question}</h3>
 				<BarChart
+					axisLabels={{x: 'Choices', y: 'Votes'}}
 					axes
-					colorBars
-					margin={{top: 10, right: 0, bottom: 30, left: 50}}
-					height={150}
+					grid
+					height={200}
 					width={350}
-					yDomainRange={[0, 10]}
+					margin={{top: 10, right: 0, bottom: 50, left: 50}}
+					colorBars
+					yDomainRange={[0, 20]}
 					data={chartOptions}
 				/>
 				<ul className='choiceList'>
