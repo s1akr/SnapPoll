@@ -4,4 +4,4 @@ import { BarChart } from 'react-easy-chart';
 import App from './App2';
 
 
-render(<App url='/data' pollInterval={200} />, document.getElementById('main-container'));
+render(<App url='/data' />, document.getElementById('main-container'));
