@@ -1,8 +1,20 @@
 
-body div div{
+body{
  /*border: 1px solid black;*/
  position: absolute;
  font-family: 'Open Sans', sans-serif;
+}
+
+#sub{
+  font-size: 14px;
+}
+
+.data{
+  width: 100%;
+}
+
+h2{
+  width: 100%;
 }
 
 #button {
@@ -14,11 +26,6 @@ body div div{
 .well {
  height: 600px;
  width: 400px;
-}
-.jumbotron {
- height: 800px;
- background: url("") no-repeat center center fixed;
- background-size: cover;
 }
 
 #App {

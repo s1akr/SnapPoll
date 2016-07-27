@@ -9,8 +9,7 @@ export default class App extends Component {
 	render() {
 
 		return (
-			<div id='App'>
-				<LoginBox />
+			<div className='App'>
 				<Data />
 			</div>
 		)

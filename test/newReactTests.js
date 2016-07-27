@@ -1,17 +1,12 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import sinon from 'sinon';
-import App from '../components/App1';
-import Data from '../components/Data';
-import LoginBox from '../components/LoginBox';
-import Radiobutton from '../components/Radio_1.js';
-import SubmitButton from '../components/SubmitButton';
 import {expect} from 'chai';
-import {BarChart} from 'react-easy-chart';
-import 'babel-polyfill';
+import sinon from 'sinon';
+import App from '../components/App2';
+import Data from '../components/Data2';
 
 describe('<App/>', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = mount(<App />);
 
   it('App should exist', () => {
     expect(wrapper).to.exist;
@@ -33,7 +28,7 @@ describe('<App/>', () => {
 })
 
 describe('<Data/>', () => {
-  const wrapper = shallow(<Data />);
+  const wrapper = mount(<Data />);
   
   it('Data should exist', () => {
     expect(wrapper).to.exist;
@@ -103,36 +98,4 @@ describe('<Radiobutton', () => {
     expect(radio.type()).to.equal('Button');
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,7 +1,6 @@
-import {  } from 'react-bootstrap';
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import App from './App1';
+import App from './App2';
 
 
-render(<App />, document.getElementById('main-container'));
+render(<App url='/data' pollInterval={200} />, document.getElementById('main-container'));
