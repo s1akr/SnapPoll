@@ -6,6 +6,7 @@ describe('GET "/results"', () => {
     request
       .get('/results')
       .expect('Content-Type', /html/)
+      .expect('Location', /\/results/)
       .expect(200, done);
   });
 });

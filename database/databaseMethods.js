@@ -127,7 +127,6 @@ function countAnswer(req, res, next) {
     counterArray.splice(index, 1, count);
     Poll.update({ }, { $set: { counter: counterArray } }, (err, result) => {
       console.log('Vote counted!');
-      req.body.counter = counterArray;
       next();
     });
   });
