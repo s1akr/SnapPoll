@@ -81,7 +81,7 @@ db.once('open', function() {
   console.log('We are connected!');
 });
 
-// Add MVP poll question to tadpolliteration database.
+//Add MVP poll question to tadpolliteration database.
 // var newPoll = Poll({
 //   question: 'What topic would you like to review?',
 //   choices: ['A','B','C','D','E'],
@@ -119,6 +119,7 @@ function getPoll(req, res, next){
 }
 
 function countAnswer(req, res, next) {
+  console.log('req.body',req.body);
   Poll.find({ }, (err, poll) => {
     if(err) throw err;
     let index = poll[0].choices.indexOf(req.body.answer)
