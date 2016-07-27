@@ -49,6 +49,7 @@ export default class App extends Component {
     	// this.update();
     	// setInterval(this.update, 2000);
   	}
+  	
   	componentDidMount() {
 		console.log('mounted');
     	this.update();
