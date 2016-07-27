@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: ["babel-polyfill", "./components/app.js"],
+  entry: ["babel-polyfill", "./Client/Result/app.js"],
   output: {
       path: __dirname + '/Build',
       // publicPath: '/assets/',

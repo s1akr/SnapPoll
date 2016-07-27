@@ -86,9 +86,9 @@ db.once('open', function() {
 //   question: 'What topic would you like to review?',
 //   choices: ['A','B','C','D','E'],
 //   answers: ['Asynchronous/Promises Fundamentals','Angular','React','Node/Express/Database Backend', 'Obect Orientated Programming'],
-//   counter: [0,0,0,0,0]
+//   counter: [1,2,3,4,5]
 // });
-//
+
 // newPoll.save(err => {
 //   if (err) console.log(err);
 //   else console.log('saved');
