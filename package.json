@@ -4,7 +4,7 @@
   "description": "Your awesome project!",
   "main": "bundle.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "test": "mocha test/.setup.js test/routes/*.js"
   },
   "author": "",
