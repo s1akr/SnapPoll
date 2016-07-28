@@ -68,7 +68,7 @@ export default class App extends Component {
 
 	render() {
 		console.log(this.state);
-		return (		
+		return (
 			<div className='App'>
 				<Data
 					key={'data'}
@@ -85,7 +85,6 @@ export default class App extends Component {
 
 	componentDidMount() {
   	this.update();
-  	setInterval(this.update, 200000);
+  	setInterval(this.update, 2000);
 	}
 }
-

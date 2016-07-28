@@ -152,6 +152,7 @@ button{
    background-color: #0495c9;
    font-size: 50px;
    font-family: "monospace";
+   min-width: 200px;
 }
 
 .btn-group-vertical > button{
@@ -171,4 +172,12 @@ button{
 .questionPrompt {
   margin-bottom: 20px;
   font-family: "monospace";
+}
+
+.result-logo {
+  text-align: center;
+  font-family: monospace;
+  margin-bottom: 0px;
+  font-size: 46px;
+  color: #89cff0;
 }
