@@ -51,8 +51,7 @@ var Survey = React.createClass({
 
     return (
       <div>
-        <h3>Question:</h3>
-        <h3>{this.props.survey.question}</h3>
+        <h3 className ='questionPrompt'>Question: {this.props.survey.question}</h3>
         <ChoiceContainer choiceData={this.props.survey}  />
       </div>
     );
@@ -80,10 +79,10 @@ var ChoiceContainer = React.createClass({
     var choicesArr = [];
     this.props.choiceData.choices.forEach(function(choice,index){
       var boundClick = this.handleClick.bind(this, index);
-      choicesArr.push(<button onClick={boundClick} type="submit" value={choice} key={index}>{this.props.choiceData.answers[index]}</button>);
+      choicesArr.push(<button className="btn group-vertical" onClick={boundClick} type="submit" value={choice} key={index}>{this.props.choiceData.answers[index]}</button>);
     }.bind(this));
     return (
-      <form className="choiceForm">
+      <form className="btn-group-vertical">
         {choicesArr}
       </form>
 
