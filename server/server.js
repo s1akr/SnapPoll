@@ -16,10 +16,11 @@ app.use(express.static(path.join(__dirname,'../')));
 //
 // MP - commented out
 // app.post('/login', dbMethods.createNewHost);
-
-app.listen(process.env.PORT || 8080, function() {
-  console.log('Server is listening on port 8080');
-});
+var port = process.env.PORT || CONFIG.port;
+app.listen(port);
+// app.listen(process.env.PORT || 8080, function() {
+//   console.log('Server is listening on port 8080');
+// });
 
 //MP - routes code for iteration project
 // Confirm file structure and file path with team. Currently commented out.
