@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const dbMethods = require('../Database/databaseMethods');
+const dbMethods = require('../database/databaseMethods');
 
 //MP - original code.
 // app.use(express.static(path.join(__dirname, './../')));
