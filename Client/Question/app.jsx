@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-// import stylesheet from '../public/style.css';
+// import style from '../../css/style.css';
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +74,12 @@ class App extends Component {
   render() {
     if (this.state.view === 'secret') {
       return (
-        <div>
+        <div className="secret">
+          <div className="header">
+            <div className="logo-small">
+              SnapPoll ...
+            </div>
+          </div>
           <div className="question">
             <div className="title">Q:</div>
             <div className="input">
@@ -147,22 +152,28 @@ class App extends Component {
     } else if (this.state.view === 'login') {
       return (
         <div className="login">
+          <div className="logo">SnapPoll</div>
+          <img src='http://www.ifias.ca/wp-content/uploads/2015/05/poll-topic-xxl.png'/>
           <input
             type="password"
             placeholder="password ..."
             onKeyDown={this.logIn}
+            autoFocus={true}
           />
         </div>
       );
     } else if (this.state.view === 'error') {
       return (
         <div className="login">
+          <div className="logo">SnapPoll</div>
+          <img src='http://www.ifias.ca/wp-content/uploads/2015/05/poll-topic-xxl.png'/>
           <input
             type="password"
             placeholder="password ..."
             onKeyDown={this.logIn}
+            autoFocus={true}
           />
-          <div className="error">You should know this one by now</div>
+          <div className="error">wth!!?? O_o</div>
         </div>
       );
     }
