@@ -33,6 +33,10 @@ app.get('/results', function(req, res) {
   res.sendFile(path.join(__dirname,'../','results.html'));
 });
 
+app.get('/question', function(req, res) {
+  res.sendFile(path.join(__dirname,'../','question.html'));
+});
+
 app.get('/data', dbMethods.getPoll);
 
 app.post('/data', dbMethods.countAnswer, function(req, res) {
@@ -45,9 +49,6 @@ app.post('/data', dbMethods.countAnswer, function(req, res) {
 //Routes for adding a question to the database
 //MP - question.html current does not exis in my folder.
 //No test written for '/question' get request.
-app.get('/question', function(req, res) {
-  res.sendFile(path.join(__dirname,'../','question.html'));
-});
 
 //No test written for '/question' post request.
 app.post('/question', dbMethods.addPoll, function(req, res) {
