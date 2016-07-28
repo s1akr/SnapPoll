@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "mocha test/.setup.js && test/newReactTests.js"
+    "test": "mocha test/.setup.js test/routes/*.js"
   },
   "author": "",
   "license": "ISC",
