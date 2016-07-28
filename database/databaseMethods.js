@@ -72,7 +72,7 @@
 //MP - DB code for iteration project
 'use strict';
 const mongoose = require('mongoose');
-const Poll = require('../Database/Models/PollModel');
+const Poll = require('../database/Models/PollModel');
 mongoose.connect('mongodb://localhost/tadpolliteration');
 
 var db = mongoose.connection;
