@@ -10,6 +10,7 @@ var SurveyTable = React.createClass({
       cache: false,
       success: function(data) {
         this.setState({data: data});
+        console.log('componentdidmount',this.state.data)
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -24,6 +25,8 @@ var SurveyTable = React.createClass({
 
   componentDidMount: function() {
     this.loadSurveyFromServer();
+    console.log('componentdidmount',this.state.data)
+    setInterval(this.loadSurveyFromServer, this.props.pollInterval);
   },
 
   render: function() {
@@ -48,8 +51,7 @@ var Survey = React.createClass({
 
     return (
       <div>
-        <h3>Question:</h3>
-        <h3>{this.props.survey.question}</h3>
+        <h3 className ='questionPrompt'>Question: {this.props.survey.question}</h3>
         <ChoiceContainer choiceData={this.props.survey}  />
       </div>
     );
@@ -77,10 +79,10 @@ var ChoiceContainer = React.createClass({
     var choicesArr = [];
     this.props.choiceData.choices.forEach(function(choice,index){
       var boundClick = this.handleClick.bind(this, index);
-      choicesArr.push(<button onClick={boundClick} type="submit" value={choice} key={index}>{this.props.choiceData.answers[index]}</button>);
+      choicesArr.push(<button className="btn group-vertical" onClick={boundClick} type="submit" value={choice} key={index}>{this.props.choiceData.answers[index]}</button>);
     }.bind(this));
     return (
-      <form className="choiceForm">
+      <form className="btn-group-vertical">
         {choicesArr}
       </form>
 
@@ -90,6 +92,6 @@ var ChoiceContainer = React.createClass({
 
 
 ReactDOM.render(
-  <SurveyTable url='/data' />,
+  <SurveyTable url='/data' pollInterval={2000} />,
   document.getElementById('main-container')
 );

@@ -2,7 +2,7 @@
 body{
   margin-left: auto;
   width: 100%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "monospace";
 }
 
 #main-container{
@@ -41,3 +41,28 @@ h2{
   text-align: left;
 }
 
+
+button{
+   background-color: #0495c9;
+   font-size: 50px;
+   font-family: "monospace";
+}
+
+.btn-group-vertical > button{
+    margin-bottom:20px;
+    height: 50px;
+    border-radius:5px !important;
+    color: #fff;
+}
+
+.votePage {
+  text-align: center;
+  font-family: "monospace";
+  color: #89cff0;
+  font-size: 70px;
+}
+
+.questionPrompt {
+  margin-bottom: 20px;
+  font-family: "monospace";
+}
