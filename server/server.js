@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname,'../')));
 // MP - commented out
 // app.post('/login', dbMethods.createNewHost);
 
-app.listen(8080, function() {
+app.listen(process.env.PORT || 8080, function() {
   console.log('Server is listening on port 8080');
 });
 
